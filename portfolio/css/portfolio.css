@@ -1,0 +1,174 @@
+#container {
+	width:100%; /*The container will try to fill the entire browser window width*/
+	max-width:1200px; /*the maximum width the container will grow to*/
+	/*height:960px;*/
+	margin:0px auto; /*This line of code is the key.  0px margin top and bottom, auto margin left and right to center*/
+	
+	padding:0px;
+	box-sizing:border-box;/*Makes it so that padding does not add to a box's total width*/
+
+  	display: grid;
+  	grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+ }
+
+body{
+	background: rgb(239,239,239);
+	font-family: Proxima Nova, Helvatica, sans-serif;
+  	
+}
+
+footer{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	padding-top: 50px;
+	width: 100%;
+	color: rgb(100,100,100);
+	text-align: center;
+}
+
+a{
+	text-decoration:none;
+
+}
+
+ul.a{
+    list-style-type: circle;
+}
+
+a:link {
+  color: rgb(55,55,55);
+}
+
+/* visited link */
+a:visited {
+  color: rgb(45,45,45);
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+.nav{
+	margin:auto;
+	font-family: 'Nanum Pen Script', cursive;
+	color:rgb(55,55,55);
+	font-size:2em;
+	grid-column-end: span 1;
+}
+
+.nav a{
+	text-decoration:none; /*get rid of the underline on thhe hyperlinks*/
+}
+
+.link{
+	text-align: right;
+	margin: 0px auto;
+	color:rgb(55,55,55);
+}
+
+.myName{
+	font-family: 'Nanum Pen Script', cursive;
+	color:rgb(55,55,55);
+	font-size:2.5em;
+	grid-column-end: span 2;
+}
+
+.halfbox{
+	color:rgb(55,55,55);
+	margin:10px;
+	padding:20px;
+	font-size: 1.3em;
+	text-align:left; /*left, right, center, justify*/
+	grid-column-end: span 4;
+}
+
+.fullbox{
+	color:rgb(55,55,55);
+	margin:10px;
+	padding:20px;
+	box-sizing:border-box;
+	text-align:center; /*left, right, center, justify*/
+	grid-column-end: span 8;
+}
+
+.thirdbox{
+	color:rgb(55,55,55);
+	
+	padding:10px;
+	font-size: 1.3em;
+	text-align:left; /*left, right, center, justify*/
+	grid-column-end: span 3;
+}
+.thirdQuater{
+	color:rgb(55,55,55);
+	margin: 0px 10px;
+	font-size: 1.3em;
+	text-align:left; /*left, right, center, justify*/
+	grid-column-end: span 5;
+}
+
+.title{
+	font-family: 'Nanum Pen Script', cursive;
+	color:rgb(55,55,55);
+	font-weight: 900;
+	text-align:center;
+	font-size: 3.5em;
+    grid-column-end: span 8;
+}
+
+.description{
+	color:rgb(55,55,55);
+	font-weight: lighter;
+	font-size: 2em;
+    text-align:center;
+    grid-column-end: span 8;
+
+}
+
+.halfbox-l-title{
+	color:rgb(55,55,55);
+	font-size: 1.5em;
+	margin-right: 30px;
+	padding: 10px;
+	text-align:right; /*left, right, center, justify*/
+	grid-column-end: span 4;
+}
+
+.halfbox-l-body{
+	color:rgb(55,55,55);
+	padding: 10px;
+	margin-right: 30px;
+	font-size:1em;
+	text-align:right; /*left, right, center, justify*/
+	grid-column-start:2;
+	grid-column-end:5;
+}
+
+.halfbox-r-title{
+	color:rgb(55,55,55);
+	padding: 10px;
+	font-size:1.5em;
+	text-align:left; /*left, right, center, justify*/
+	grid-column-start: 5;
+	grid-column-end: 8;
+}
+
+.halfbox-r-body{
+	color:rgb(55,55,55);
+	padding: 10px;
+	font-size:1em;
+	text-align:left; /*left, right, center, justify*/
+	grid-column-start: 5;
+	grid-column-end: 8;
+}
+
+.quarterbox{
+	color:rgb(55,55,55);
+	margin:20px;
+	padding:20px;
+	font-size:1.5em;
+	text-align:left; /*left, right, center, justify*/
+	grid-column-end: span 4;
+}
