@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;}
+    body{
+        background-color: rgb(250, 242, 212);
+        width:100%;
+        max-width:960px;
+        margin:0px auto;}
+    h2 { 
+        color: black;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 40;
+        text-align: center;}
+
+    p {
+      color: black;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 22;}
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <h2>
+    Introduction
+  </h2>
+  <p>
+     I used the Denver policy dataset to count the type of each arrests. As you can see below, the y-axis is the count of vehicular arrests number, and the x-axis is each precinct. The source is code is <a href="code_wa_8.html">here</a>.
+  <br></p>
+  <p>
+  	As we can see that, precinct 223 has most vehicular arrest count and 759 is the lowest. I think this might relate to the population and the flow of the cars. Also, I think probably in area 223, there are more highways which may cause a higher rate of arrests.
+  </p>
+
+  
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-a589a1ec03a12f941a74f3fa9541dddb"}, "mark": "bar", "encoding": {"x": {"type": "nominal", "field": "precinct"}, "y": {"type": "quantitative", "field": "Count"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-a589a1ec03a12f941a74f3fa9541dddb": [{"precinct": "423", "Count": 100}, {"precinct": "324", "Count": 35}, {"precinct": "None", "Count": 121}, {"precinct": "323", "Count": 70}, {"precinct": "314", "Count": 56}, {"precinct": "422", "Count": 121}, {"precinct": "421", "Count": 178}, {"precinct": "313", "Count": 98}, {"precinct": "322", "Count": 86}, {"precinct": "312", "Count": 155}, {"precinct": "412", "Count": 208}, {"precinct": "311", "Count": 210}, {"precinct": "411", "Count": 208}, {"precinct": "321", "Count": 47}, {"precinct": "122", "Count": 157}, {"precinct": "213", "Count": 118}, {"precinct": "123", "Count": 88}, {"precinct": "623", "Count": 58}, {"precinct": "622", "Count": 55}, {"precinct": "223", "Count": 257}, {"precinct": "611", "Count": 96}, {"precinct": "222", "Count": 100}, {"precinct": "621", "Count": 91}, {"precinct": "121", "Count": 161}, {"precinct": "612", "Count": 73}, {"precinct": "211", "Count": 130}, {"precinct": "221", "Count": 146}, {"precinct": "113", "Count": 123}, {"precinct": "512", "Count": 76}, {"precinct": "212", "Count": 158}, {"precinct": "112", "Count": 123}, {"precinct": "111", "Count": 209}, {"precinct": "523", "Count": 32}, {"precinct": "521", "Count": 146}, {"precinct": "522", "Count": 46}, {"precinct": "511", "Count": 104}, {"precinct": "759", "Count": 1}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
