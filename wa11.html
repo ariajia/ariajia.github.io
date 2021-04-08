@@ -1,0 +1,244 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Reveal.JS Template for Week 13</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/sky.min.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css" id="highlight-theme">
+
+		<!-- Import Vega -->
+		<script src="https://cdn.jsdelivr.net/npm/vega@3"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Weekly Assignment 11</h3>
+					<p>INFO 3402 - Aria Jia</p>
+				</section>
+
+
+				<section>
+					<section>
+						<p>Example 1: The sources of electricity in Iowa</p>
+						<div id="vis0"></div>
+		
+						<script type="text/javascript">
+							var spec = {
+							  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+							  "config": {
+							    "view": {
+							    	"continuousHeight": 800,
+							    	"continuousWidth": 1000
+							    	}
+							    },
+							    "width": 500,
+							    "height": 400,
+							    "data": {
+							    	"url": "https://vega.github.io/vega-datasets/data/iowa-electricity.csv"
+							    },
+							    "encoding": {
+							    	"color": {
+							    		"field": "source",
+							    		"type": "nominal"
+							    	},
+							    	"x": {
+							    		"field": "year",
+							    		"type": "temporal"
+							    	},
+							    	"y": {
+							    		"field": "net_generation",
+							    		"type": "quantitative"
+							    	}
+							    },
+								"mark": "area"
+							};
+						
+							var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+						
+							vegaEmbed("#vis0", spec, opt);
+						
+						</script>
+						<p>See the turorial below</p>
+					</section>
+
+					<section>
+						<h3>Step 1</h3>
+						<ul>
+							<li>Get a dataset link from <a href="https://vega.github.io/vega-datasets/">vaga-dataset</a>
+							<li>Copy and Paste the link into the 'url' attribute under the spec variable</li>
+						</ul>
+						<pre><code data-trim class="js" data-line-numbers=12|13>
+							var spec = {
+							  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+							  "config": {
+							    "view": {
+							    	"continuousHeight": 800,
+							    	"continuousWidth": 1000
+							    	}
+							    },
+							    "width": 500,
+							    "height": 400,
+							    "data": {
+							    	"url": "https://vega.github.io/vega-datasets/data/iowa-electricity.csv"
+							    },
+						</code></pre>
+
+					</section>
+					<section>
+						<h3>Step 2</h3>
+						<li>Change the encoding variables<br>
+						 "color", "x", "y", and "mark"</li>
+						<pre><code data-trim data-line-numbers=2-5|6-9|10-13|15>
+							<script type="text/template">
+							"encoding": {
+							    	"color": {
+							    		"field": "source",
+							    		"type": "nominal"},
+							    	"x": {
+							    		"field": "year",
+							    		"type": "temporal"
+							    	},
+							    	"y": {
+							    		"field": "net_generation",
+							    		"type": "quantitative"
+							    	}
+							    },
+								"mark": "area"
+							    },
+							</script>
+						</code></pre>
+					</section>
+
+						<section>
+							<h3>Final Step</h3>
+
+							<p>Now, Put this block of code into a SECTION in your Reveal.js template.</p>
+
+							<pre><code data-trim>
+								<div id="vis0"></div>
+								<script type="text/javascript">
+									
+									var spec = {
+									  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+									  "config": {
+									    "view": {
+									    	"continuousHeight": 800,
+									    	"continuousWidth": 1000
+									    	}
+									    },
+									    "width": 500,
+									    "height": 400,
+									    "data": {
+									    	"url": "https://vega.github.io/vega-datasets/data/iowa-electricity.csv"
+									    },
+									    "encoding": {
+									    	"color": {
+									    		"field": "source",
+									    		"type": "nominal"
+									    	},
+									    	"x": {
+									    		"field": "year",
+									    		"type": "temporal"
+									    	},
+									    	"y": {
+									    		"field": "net_generation",
+									    		"type": "quantitative"
+									    	}
+									    },
+										"mark": "area"
+									};
+								
+									var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+								
+									vegaEmbed("#vis0", spec, opt);	
+								</script>
+							</code></pre>
+						</section>
+					</section>
+				</section>
+
+				<section>
+					<h3>Interpretation</h3>
+					<p>This chart is about the source of electicity in Iowa. We can see that most of the energy is from the fossil feuls, which is the most common energy of all the time. <br>The nuclear energy is mmmost clean but due to its cost, we can see that it only accounts for few percentage.</p>
+				</section>
+
+				<section>
+					<h3>Example 2: Wheat Yield</h3>
+					<div id="vis1"></div>
+								<script type="text/javascript">
+									
+									var spec = {
+									  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+									  "config": {
+									    "view": {
+									    	"continuousHeight": 800,
+									    	"continuousWidth": 1000
+									    	}
+									    },
+									    "width": 500,
+									    "height": 400,
+									    "data": {
+									    	"url": "https://vega.github.io/vega-datasets/data/wheat.json"
+									    },
+									    "encoding": {
+										    "color": {
+										      "condition": {
+										        "test": "(datum.year === 1810)",
+										        "value": "orange"
+										      },
+										      "value": "steelblue"
+										    },
+										    "x": {
+										      "field": "year",
+										      "type": "ordinal"
+										    },
+										    "y": {
+										      "field": "wheat",
+										      "type": "quantitative"
+										    }
+										  },
+										  "mark": "bar",
+										  "width": 600
+										};
+								
+									var embedOpt = {"mode": "vega-lite"};
+
+								     
+								      vegaEmbed("#vis1", spec, embedOpt).catch(error => showError(el, error));
+								   	(vegaEmbed);
+					      
+						</script>
+
+				</section>
+				<section>
+					<h3>Interpretation</h3>
+					<p>Not very sure about the dataset, but I guess it's about some contries's wheat yeild in years. In 1810, the wheat yield reached the peak.</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: 'h/v',
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>
