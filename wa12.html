@@ -29,204 +29,180 @@
 
 				<section>
 					<section>
-						<p>Example 1: The sources of electricity in Iowa</p>
-						
-						<div id="vis-0"></div>
+						<h3>The prediction of the Weather in Seattle</h3>
+						<p>Customize color and font</p>
+						<div id="vis2"></div>
 		
 						<script type="text/javascript">
 							var spec = {
-							    "width": 500,
-							    "height": 400,
+				                  "background":"#D4F5FA",
+				                  "title": {
+				                    "text":"Precipitaton by Date",
 
-							    "data": {
-							    	"url": "https://vega.github.io/vega-datasets/data/iowa-electricity.csv"
-							    },
-							    "encoding": {
-							    	"color": {
-							    		"field": "source",
-							    		"type": "nominal"
-							    	},
-							    	"x": {
-							    		"field": "year",
-							    		"type": "temporal"
-							    	},
-							    	"y": {
-							    		"field": "net_generation",
-							    		"type": "quantitative",
-							    		"title": "Energy Engeration",
-										"axis":{
-										"labelColor": "red"
-									}
-										
-							    },
-							    "view": {
-										"fill":"red"
-								},
-								"mark": "area";
-								"background":"white"
-							};
+
+				                  },
+				                  "width": 800,
+				                  "height": 200,
+				                  "config": {
+				                    "font":"Helvetica"
+				                  },
+				                  "data": {
+				                    "url": "https://vega.github.io/vega-datasets/data/weather.csv"
+				                  },
+				                  "mark": {"type":"line", "tooltip":true, "color":"#EAA721"},
+				                  "encoding": {
+				                    "x": {
+				                      "field": "date",
+				                      "type":"nominal",
+				                      //"sort":"y",
+				                      "axis":{
+				                        "labelOverlap":"parity",
+
+				                        "title":"Date"
+				                      }
+				                    },
+				                    "y": {
+				                      "field": "precipitation",
+				                      "type":"quantitative",
+				                      "axis": {
+				                        "title":"Precipitaton"
+				                      }
+				                    }
+				                  }
+				                  };
 						
 							var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
 						
-							vegaEmbed("#vis-0", spec, opt);
+							vegaEmbed("#vis2", spec, opt);
 						
 						</script>
-						<p>See the turorial below</p>
+					
 					</section>
 
 					<section>
-						<h3>Step 1</h3>
-						<ul>
-							<li>Get a dataset link from <a href="https://vega.github.io/vega-datasets/">vaga-dataset</a>
-							<li>Copy and Paste the link into the 'url' attribute under the spec variable</li>
-						</ul>
-						<pre><code data-trim class="js" data-line-numbers=12|13>
+						<h4>The code showing how to achieve these customization</h4>
+						
+						<pre><code data-trim class="js">
 							var spec = {
-							  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-							  "config": {
-							    "view": {
-							    	"continuousHeight": 800,
-							    	"continuousWidth": 1000
-							    	}
-							    },
-							    "width": 500,
-							    "height": 400,
-							    "data": {
-							    	"url": "https://vega.github.io/vega-datasets/data/iowa-electricity.csv"
-							    },
+				                  "background":"#D4F5FA",
+				                  "title": {
+				                    "text":"Precipitaton by Date",
+				                  },
+				                  "width": 800,
+				                  "height": 200,
+				                  "config": {
+				                    "font":"Helvetica"
+				                  },
+				                  "data": {
+				                    "url": "https://vega.github.io/vega-datasets/data/weather.csv"
+				                  },
+				                  "mark": {"type":"line", "tooltip":true, "color":"grey"},
+				                  "encoding": {
+				                    "x": {
+				                      "field": "date",
+				                      "type":"nominal",
+				                   
+				                      "axis":{
+				                        "labelOverlap":"parity",
+
+				                        "title":"Date"
+				                      }
+				                    },
+				                    "y": {
+				                      "field": "precipitation",
+				                      "type":"quantitative",
+				                      "axis": {
+				                        "title":"Precipitaton"
+				                      }
+				                    }
+				                  }
+				                  };
 						</code></pre>
 
 					</section>
 					<section>
-						<h3>Step 2</h3>
-						<li>Change the encoding variables<br>
-						 "color", "x", "y", and "mark"</li>
-						<pre><code data-trim data-line-numbers=2-5|6-9|10-13|15>
-							<script type="text/template">
-							"encoding": {
-							    	"color": {
-							    		"field": "source",
-							    		"type": "nominal"},
-							    	"x": {
-							    		"field": "year",
-							    		"type": "temporal"
-							    	},
-							    	"y": {
-							    		"field": "net_generation",
-							    		"type": "quantitative"
-							    	}
-							    },
-								"mark": "area"
-							    },
-							</script>
-						</code></pre>
+						<h3>Intepretation</h3>
+						<p>
+							The dataset comes from the <a href="https://github.com/vega/vega-datasets/blob/master/data/seattle-weather.csv">Seattle weather precipitation</a> from 2021 to 2015. The number precipitation shows the probablity of a certain kind of weather on that day. We can roughly see that every year the number for May is fairly high.
+						</p>
+					</section>
+					
+				</section>
+
+				
+				<section>
+					<section>
+					<h4>Show the weather precipitation in both New York and Seattle (Using facet)</h4>
+					<div id="vis3"></div>
+					<script type="text/javascript">
+						var spec = {
+
+		                  "background":"#D4F5FA",
+		                  "title": {
+		                    "text":"Precipitaton by Date",
+
+		                  },
+		                  "width": 800,
+		                  "height": 200,
+		                  "config": {
+		                    "font":"Helvetica"
+		                  },
+		                  "data": {
+		                    "url": "https://vega.github.io/vega-datasets/data/weather.csv"
+		                  },
+		                  "mark": {"type":"line", "tooltip":true, "color":"grey"},
+		                  "encoding": {
+		                  	"color":{
+              					"field":"location"
+            					},
+		                    "x": {
+		                      "field": "date",
+		                      "type":"nominal",
+		                      //"sort":"y",
+		                      "axis":{
+		                        "labelOverlap":"parity",
+
+		                        "title":"Date"
+		                      }
+		                    },
+		                    "y": {
+		                      "field": "precipitation",
+		                      "type":"quantitative",
+		                      "axis": {
+		                        "title":"Precipitaton"
+		                      }
+		                    }
+		                   
+		                  }
+		                  };
+				
+					var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+				
+					vegaEmbed("#vis3", spec, opt);
+				</script>
+				</section>
+
+					<section>
+						<h4>Add a color attribute inside of the "encoding"</h4>
+						<pre><code data-trim class="js">
+								var spec = {
+					                 "encoding": { 
+					                 "color":{
+					                 	"field":"location",
+					                 }
+					             }
+	             		</code></pre>
 					</section>
 
-						<section>
-							<h3>Final Step</h3>
-
-							<p>Now, Put this block of code into a SECTION in your Reveal.js template.</p>
-
-							<pre><code data-trim>
-								<div id="vis0"></div>
-								<script type="text/javascript">
-									
-									var spec = {
-									  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-									  "config": {
-									    "view": {
-									    	"continuousHeight": 800,
-									    	"continuousWidth": 1000
-									    	}
-									    },
-									    "width": 500,
-									    "height": 400,
-									    "data": {
-									    	"url": "https://vega.github.io/vega-datasets/data/iowa-electricity.csv"
-									    },
-									    "encoding": {
-									    	"color": {
-									    		"field": "source",
-									    		"type": "nominal"
-									    	},
-									    	"x": {
-									    		"field": "year",
-									    		"type": "temporal"
-									    	},
-									    	"y": {
-									    		"field": "net_generation",
-									    		"type": "quantitative"
-									    	}
-									    },
-										"mark": "area"
-									};
-								
-									var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
-								
-									vegaEmbed("#vis0", spec, opt);	
-								</script>
-							</code></pre>
-						</section>
+					<section>
+						<h3>Interpretation</h3>
+						<p>
+							We can roughly see that the precipitation number of New York is somehow similar to the Seattle's. I don't think there are any obvious relation between these two locations. But yes, we can use this facet to do the comparision beetween them two.
+						</p>
 					</section>
-				</section>
-
-				<section>
-					<h3>Interpretation</h3>
-					<p>This chart is about the source of electicity in Iowa. We can see that most of the energy is from the fossil feuls, which is the most common energy of all the time. <br>The nuclear energy is mmmost clean but due to its cost, we can see that it only accounts for few percentage.</p>
-				</section>
-
-				<section>
-					<h3>Example 2: Wheat Yield</h3>
-					<div id="vis1"></div>
-								<script type="text/javascript">
-									
-									var spec = {
-									  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-									  "config": {
-									    "view": {
-									    	"continuousHeight": 800,
-									    	"continuousWidth": 1000
-									    	}
-									    },
-									    "width": 500,
-									    "height": 400,
-									    "data": {
-									    	"url": "https://vega.github.io/vega-datasets/data/wheat.json"
-									    },
-									    "encoding": {
-										    "color": {
-										      "condition": {
-										        "test": "(datum.year === 1810)",
-										        "value": "orange"
-										      },
-										      "value": "steelblue"
-										    },
-										    "x": {
-										      "field": "year",
-										      "type": "ordinal"
-										    },
-										    "y": {
-										      "field": "wheat",
-										      "type": "quantitative"
-										    }
-										  },
-										  "mark": "bar",
-										  "width": 600
-										};
-								
-									var embedOpt = {"mode": "vega-lite"};
-
-								     
-								      vegaEmbed("#vis1", spec, embedOpt).catch(error => showError(el, error));
-								   	(vegaEmbed);
-					      
-						</script>
 
 				</section>
-				<section>
-					<h3>Interpretation</h3>
-					<p>Not very sure about the dataset, but I guess it's about some contries's wheat yeild in years. In 1810, the wheat yield reached the peak.</p>
-				</section>
+				
 			</div>
 		</div>
 
